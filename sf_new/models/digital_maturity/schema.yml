@@ -1,0 +1,43 @@
+
+version: 2
+
+sources:
+  - name: account
+    description: "Table that contains account related info"
+    database: VAULT_FIVETRAN
+    schema: OPTI_SALESFORCE
+    tables:
+      - name: ACCOUNT
+  - name: builtwith_tables
+    database: VAULT_FIVETRAN
+    schema: POSTGRES_PUBLIC
+    tables:
+      - name: CUST_BUILTWITH_TECHNOLOGY_MAP
+  - name: static_builtwith_tables
+    database: SANDBOX
+    schema: MAHMUD_EXPERIMENT
+    tables:
+      - name: CUST_BUILTWITH_DATA
+      - name: DIGITAL_MATURITY_VALIDATE
+  
+
+
+
+models:
+  - name: compiled_tech_map
+    description: "A starter dbt model"
+    columns:
+      - name: DOMAIN_NAME
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: digital_maturity_result
+    description: "A starter dbt model"
+    columns:
+      - name: DOMAIN_NAME
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
